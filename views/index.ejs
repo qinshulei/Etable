@@ -1,0 +1,53 @@
+<% include head %>
+
+<div class="container">
+  <h1><%= title %>  <small>a table editor demo online</small></h1>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= table.name %></div>
+    <div class="panel-body">
+      <p><%= table.description %></p>
+      <p> double click to change item content !</p>
+    </div>
+    <!-- Table -->
+    <table class="table" id="etable">
+      <% for(var i=0; i<table.rows; i++){ %>
+         <tr>
+          <% for(var j=0; j<table.columns; j++){ %>
+             <td class="cell" id="<%= 'cell' + ( i*table.columns + j ) %>">
+               <%= table.datas[ i*table.columns + j ] %>
+             </td>
+          <% } %>
+          </tr>
+      <% } %>
+    </table>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" id="myModal_content" rows="3"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"  id="myModal_close" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="myModal_confirm">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<% include script %>
+<script type="text/javascript">
+
+</script>
+
+
+<% include foot %>
